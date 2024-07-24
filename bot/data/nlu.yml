@@ -1,0 +1,42 @@
+version: "3.1"
+
+nlu:
+- intent: github
+  examples: |
+    - open get up
+    - open get help
+    - open get hub
+    - open getup
+    - o pen k hub
+- intent: selfcall
+  examples: |
+    - friday
+    - fry day
+    - fri day
+    - fi day
+    - fri yay
+    - fy yay
+    - fy day
+    - fry yay
+- intent: sir
+  examples: |
+    - sar
+    - sir
+    - sur
+    - call me sir
+    - call me sar
+    - call me sur
+    - address me as sir
+    - address me as sar
+    - address me as sur
+- intent: madam
+  examples: |
+    - madam
+    - mam
+    - maam
+    - call me mam
+    - call me madam
+    - call me maam
+    - address me as mam
+    - address me as madam
+    - address me as maam

@@ -1,0 +1,22 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"github\"}}]": "utter_github",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"github\"}}, {\"prev_action\": {\"action_name\": \"utter_github\"}, \"user\": {\"intent\": \"github\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"sir\"}}]": "utter_sir",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"sir\"}}, {\"prev_action\": {\"action_name\": \"utter_sir\"}, \"user\": {\"intent\": \"sir\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"selfcall\"}}]": "utter_self",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"selfcall\"}}, {\"prev_action\": {\"action_name\": \"utter_self\"}, \"user\": {\"intent\": \"selfcall\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"madam\"}}]": "utter_madam",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"madam\"}}, {\"prev_action\": {\"action_name\": \"utter_madam\"}, \"user\": {\"intent\": \"madam\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "predicting default action with intent back",
+      "predicting default action with intent session_start",
+      "predicting default action with intent restart"
+    ]
+  }
+}
