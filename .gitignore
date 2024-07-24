@@ -4,3 +4,6 @@ target/
 test.*
 bins/
 bot/models/
+bot/.rasa/
+.vscode/
+.DS_Store
