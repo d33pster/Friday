@@ -4,3 +4,4 @@ target/
 test.*
 bins/
 bot/models/
+.vscode/
