@@ -106,10 +106,6 @@ class Friday:
                         continue
                     else:
                         self.comprehension.pathway(clist_index=index, comprehended_command=command)
-    
-    @property
-    def boot(self):
-        self.speech.speak_as_thread("Booting Up!")
         
 class FridayArguments:
     def __init__(self):

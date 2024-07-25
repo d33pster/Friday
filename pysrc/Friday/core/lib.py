@@ -71,14 +71,11 @@ class Core:
         
         @property
         def create_env(self):
-            # print("asdasd")
-            temp_ = self.config
-            # create the temp file
-            with open(join(temp_, 'create_server.sh'), 'w+') as server:
+            with open(join(self.config, 'create_server.sh'), 'w+') as server:
                 server.write(self.server_env_create_commands)
             
             # give it perms
-            chmod(join(temp_, 'create_server.sh'),
+            chmod(join(self.config, 'create_server.sh'),
                 stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR |  # rwx user
                 stat.S_IRGRP | stat.S_IXGRP |                 # rx group
                 stat.S_IROTH | stat.S_IXOTH)                  # rx other
@@ -88,30 +85,28 @@ class Core:
                 run(path)
             
             # call it
-            thread = threading.Thread(target=create_server_thread, args=(join(temp_, 'create_server.sh'),))
+            thread = threading.Thread(target=create_server_thread, args=(join(self.config, 'create_server.sh'),))
             thread.start()
             thread.join()
         
         @property
         def start(self):
-            temp_ = self.config
-            # create the temp file
-            with open(join(temp_, 'start_server.sh'), 'w+') as server:
+            with open(join(self.config, 'start_server.sh'), 'w+') as server:
                 server.write(self.server_start_commands)
             
             # give it perms
-            chmod(join(temp_, 'start_server.sh'),
+            chmod(join(self.config, 'start_server.sh'),
                 stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR |  # rwx user
                 stat.S_IRGRP | stat.S_IXGRP |                 # rx group
                 stat.S_IROTH | stat.S_IXOTH)                  # rx other
             
-            run(join(temp_, 'start_server.sh'))
+            run(join(self.config, 'start_server.sh'))
 
     class Soul:
         def __init__(self):
             self.__name = "Friday"
-            self.__version = "2.0"
-            self.__version_in_words = "two point O"
+            self.__version = "0.2"
+            self.__version_in_words = "O point 2"
         
         @property
         def name(self) -> str:
@@ -147,63 +142,6 @@ class Core:
 
         @property
         def check_and_update_files(self):
-        # Begin - audios/
-
-            # if config_dir/audios/ not present
-            if not exists(join(self.config_folder, 'audios')):
-                # find asset url for 'audios.zip'
-                asset_url_audios = None # initialise to None
-                # find if asset['name'] == 'audios.zip' is present or not
-                for asset in self.getConfigurations.response['assets']:
-                    if asset['name'] == 'audios.zip':
-                        # if found, get the download url
-                        asset_url_audios = asset['browser_download_url']
-                        # and break out of the loop
-                        break
-                
-                # ultimately if not found, exit
-                if not asset_url_audios:
-                    self.speech.speak_as_thread("Failed to download audios needed for smooth functioning!", wait=True)
-                    self.speech.speak_as_thread("Check latest release for download link and instructions!", wait=True)
-                    # self.speech.speak_till_end
-                    # print(f"{Fore.RED}Failed to download audios needed for smooth functioning!{Fore.RESET} Check latest release for download link and instructions.")
-                    sys.exit(1)
-                # download and get the filename
-                self.speech.speak_as_thread("Downloading audios")
-                # self.speech.speak
-                filename = self.Downloader(asset_url_audios, self.downloads_folder).simulate
-                # print status
-                # print(f" {Fore.BLUE}downloaded{Fore.RESET}: {filename} to {join(self.downloads_folder, filename)}.")
-                self.speech.speak_as_thread("Downloaded")
-                # self.speech.speak
-                # check if the zip file is intact
-                if not zipfile.is_zipfile(join(self.downloads_folder, 'audios.zip')):
-                    # if not a zip file then, print error and exit
-                    # print(f"{Fore.RED}Failed{Fore.RESET} to extract \'audios.zip\'. Unable to identify zip data.")
-                    self.speech.speak_as_thread("Failed to extract audios dot zip.", wait=True)
-                    self.speech.speak_as_thread("Unable to identify zip data.")
-                    sys.exit(1)
-                # initialise a wrapper bar object
-                wrap = Wrapper()
-                # define codes
-                pythoncodes = [
-                    f"""with zipfile.ZipFile(join(\'{self.downloads_folder}\', \'audios.zip\'), \'r\') as zip_ref:
-    zip_ref.extractall(\'{self.config_folder}\')"""
-                ]
-                # define dependencies
-                dependencies = [
-                    """import zipfile""",
-                    """from os.path import join"""
-                ]
-                # simulate progress bar
-                self.speech.speak_as_thread("Extracting audios dot zip")
-                wrap.pyShellWrapper(pythoncodes, dependencies, "Extracting", 0.01, 70, 'ElapsedTime')
-                self.speech.speak_as_thread("Extracted")
-                # delete the download
-                unlink(join(self.downloads_folder, 'audios.zip'))
-                # print status
-                # print(f" extracted: \'audios.zip\' to  {join(self.downloads_folder, 'audios')}")
-            
             # Begin - model/
 
             # if config_dir/model/ not present
@@ -311,7 +249,7 @@ class Core:
                 # delete the download
                 unlink(join(self.downloads_folder, 'bot.zip'))
             else:
-                self.speech.speak_as_thread("NLP Server is installed!")
+                self.speech.speak_as_thread("Natural Language Processing systems... in place!")
         
         class Configurations:
             def __init__(self):
