@@ -542,10 +542,22 @@ class Core:
                         # update status
                         self.updater.refresh
                         self.updater.message = f"{Fore.BLUE}Running{Fore.RESET} default web-browser"
+                        self.updater.update()
 
                         self.speech.speak_as_thread("GitHub has been opened!")
 
                         # open
                         webbrowser.open("https://github.com")
+                        self.updater.refresh
+                        
+                    elif remaining_command == "linkedin":
+                        self.updater.refresh
+                        self.updater.message = f"{Fore.BLUE}Running{Fore.RESET} default web-browser"
+                        self.updater.update()
+
+                        self.speech.speak_as_thread("Linkedin has been opened!")
+
+                        webbrowser.open("https://linkedin.com/in/")
+                        self.updater.refresh
                 else:
                     pass
