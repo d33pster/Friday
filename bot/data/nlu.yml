@@ -8,6 +8,18 @@ nlu:
     - open get hub
     - open getup
     - o pen k hub
+    - open github
+- intent: linkedin
+  examples: |
+    - open linkedin
+    - open link den
+    - open link and
+    - o pen link den
+    - open linkden
+    - o pen linkedin
+    - o pen lake den
+    - open lake then
+    - open link den
 - intent: selfcall
   examples: |
     - friday
