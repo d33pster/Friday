@@ -7,6 +7,11 @@ stories:
   - intent: github
   - action: utter_github
 
+- story: linkedin's path
+  steps:
+  - intent: linkedin
+  - action: utter_linkedin
+
 - story: selfcall's path
   steps:
   - intent: selfcall

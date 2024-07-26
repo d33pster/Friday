@@ -37,7 +37,7 @@ class SpeechToText:
 
             self.updater.refresh
             self.updater.message = " " + listening_label
-            self.updater.update
+            self.updater.update()
 
             try:
                 audio = self.recognizer.listen(source, phrase_time_limit=phrase_time_limit)

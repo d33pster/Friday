@@ -7,6 +7,11 @@ rules:
   - intent: github
   - action: utter_github
 
+- rule: Say linkedin if intent is linkedin
+  steps:
+  - intent: linkedin
+  - action: utter_linkedin
+
 - rule: Say friday if intent is selfcall
   steps:
   - intent: selfcall

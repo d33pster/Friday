@@ -5,6 +5,7 @@ intents:
   - selfcall
   - sir
   - madam
+  - linkedin
 
 responses:
   utter_github:
@@ -18,6 +19,9 @@ responses:
 
   utter_madam:
   - text: "madam"
+
+  utter_linkedin:
+  - text: "open linkedin"
 
 session_config:
   session_expiration_time: 60
